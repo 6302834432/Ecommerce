@@ -1,39 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
-import '../src/index'
-import { BrowserRouter } from 'react-router-dom';
-import CartProvider from './Hooks/CartHook';
-import LoadingProvider from './Hooks/LoadingHook';
-import 'react-toastify/ReactToastify.css'
-import { AuthProvider } from './Hooks/UseAuthHook';
-import { ToastContainer } from 'react-toastify';
-import './Interceptor/authinterceptor'
+import reportWebVitals from './reportWebVitals';
+import ShopContextProvider from './Components/ShopContext/ShopContext';
+// import ShopperContextProvider from './Components/ShopContext/ShopContext';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-       
-        <BrowserRouter>
-        <AuthProvider>
-        <LoadingProvider>
-        <CartProvider>
-            <App/>
-            <ToastContainer 
-            position='bottom-right'
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-             rtl={false}
-            pauseOnFocusLoss 
-            draggable
-            pauseOnHover
-            theme='light'/>
-            
-           </CartProvider>
-           </LoadingProvider>
-           </AuthProvider>
-            </BrowserRouter>
-           
-    </React.StrictMode>
+    <ShopContextProvider>
+    <App />
+    </ShopContextProvider>
+    
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
